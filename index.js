@@ -5,7 +5,7 @@ import random from "random";
 const path = "./data.json";
 const isValidate = (date) => {
   const startDate = moment("2012-01-01");
-  const endDate = moment(2024 - 12 - 13);
+  const endDate = moment("2024-12-30");
   return date.isBetween(startDate, endDate, null, "[]");
 };
 const markCommit = async (date) => {
@@ -21,7 +21,7 @@ const makeCommits = async (n) => {
   for (let i = 0; i < n; i++) {
     const randomWeeks = random.int(0, 54 * 4);
     const randomDay = random.int(0, 6);
-    const randomDate = moment("2019-01-01")
+    const randomDate = moment("2022-12-12")
       .add(randomWeeks, "weeks")
       .add(randomDay, "days");
 
@@ -33,7 +33,6 @@ const makeCommits = async (n) => {
     }
   }
   console.log("Pushing all commit ");
-  await git.push();
-  // await git.push("origin","master");
+  await git.push("origin", "master");
 };
 makeCommits(50000);
